@@ -6,17 +6,19 @@ const api = axios.create({
   baseURL: endpoints.baseURL,
 });
 
-export function getActivePrompt() {
-  const { data } = api.get(endpoints.activePrompt);
+const getActivePrompt = async () => {
+  const { data } = await api.get(endpoints.activePrompt);
 
   return promptSchema.parse(data);
-}
+};
 
-export function createAnswer(answer) {
-  return api.post(endpoints.createAnswer, { answer });
-}
+const createAnswer = async (answer) => {
+  return await api.post(endpoints.createAnswer, { answer });
+};
 
-export default {
+const promptClient = {
   getActivePrompt,
   createAnswer,
 };
+
+export default promptClient;

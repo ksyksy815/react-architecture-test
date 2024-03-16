@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navigation";
 import ClientWrapper from "./ClientWrapper";
+import { Button } from "@/components/ui/button";
+import MobileNav from "@/components/shared/MobileNav";
+import Navigation from "@/components/shared/Navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,12 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`flex flex-col items-center w-screen min-h-screen ${inter.className} bg-background`}>
         <ClientWrapper>
-          <header>
-            <Navbar />
+          <header className="w-screen max-w-screen-lg">
+            <MobileNav />
+            <Navigation />
           </header>
-          <main>{children}</main>
+          <main className="w-screen max-w-screen-lg flex-1">{children}</main>
         </ClientWrapper>
       </body>
     </html>
